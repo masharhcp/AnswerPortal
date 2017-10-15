@@ -1,0 +1,12 @@
+﻿@model AnswerPoortal.Models.OrderStatus
+
+@{
+    ViewBag.Title = "OrderStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Status of order number: @Html.DisplayFor(model => model.ordId)</h2>
+
+@Html.DisplayNameFor(model => model.status): &nbsp;@Html.DisplayFor(model => model.status)
+
+

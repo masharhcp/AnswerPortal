@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AnswerPortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="surname" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="email" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="role" Type="char" MaxLength="18" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="tokenNum" Type="int" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="text" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="num" Type="int" Nullable="false" />
+    <Property Name="isCorrect" Type="bit" Nullable="false" />
+    <Property Name="index" Type="char" MaxLength="18" Nullable="false" />
+    <Property Name="idQuestion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnswerCopy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="text" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="num" Type="int" Nullable="false" />
+    <Property Name="isCorrect" Type="bit" Nullable="false" />
+    <Property Name="index" Type="char" MaxLength="18" Nullable="false" />
+    <Property Name="idQuestion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Channel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="closureDate" Type="datetime" />
+    <Property Name="timeConstrained" Type="bit" Nullable="false" />
+    <Property Name="idAccount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="answerPriceK" Type="int" Nullable="false" />
+    <Property Name="unlockPriceM" Type="int" Nullable="false" />
+    <Property Name="evaluationPriceE" Type="int" Nullable="false" />
+    <Property Name="silverPriceS" Type="int" Nullable="false" />
+    <Property Name="goldPriceG" Type="int" Nullable="false" />
+    <Property Name="platinumPriceP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tokenNum" Type="int" Nullable="false" />
+    <Property Name="tokenPrice" Type="int" Nullable="false" />
+    <Property Name="status" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="idAccount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="text" Type="varchar" MaxLength="3000" Nullable="false" />
+    <Property Name="pic_path" Type="varbinary(max)" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="lockDate" Type="datetime" />
+    <Property Name="idAccount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionCopy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="text" Type="varchar" MaxLength="3000" Nullable="false" />
+    <Property Name="pic_path" Type="varbinary(max)" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="lockDate" Type="datetime" />
+    <Property Name="idAccount" Type="int" Nullable="false" />
+    <Property Name="idOriginal" Type="int" Nullable="false" />
+    <Property Name="idChannel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Response">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="idChannel" Type="int" Nullable="false" />
+    <Property Name="idQuestion" Type="int" Nullable="false" />
+    <Property Name="idAccount" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="R_10">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Response" Type="Self.Response" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Response">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_11">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_12">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Channel" Type="Self.Channel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Channel">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_2">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_3">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="QuestionCopy" Type="Self.QuestionCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="QuestionCopy">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_4">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="QuestionCopy" Type="Self.QuestionCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="QuestionCopy">
+        <PropertyRef Name="idOriginal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_5">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
+    <End Role="QuestionCopy" Type="Self.QuestionCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="QuestionCopy">
+        <PropertyRef Name="idChannel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_6">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="idQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_7">
+    <End Role="QuestionCopy" Type="Self.QuestionCopy" Multiplicity="1" />
+    <End Role="AnswerCopy" Type="Self.AnswerCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionCopy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AnswerCopy">
+        <PropertyRef Name="idQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_8">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
+    <End Role="Response" Type="Self.Response" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Response">
+        <PropertyRef Name="idChannel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_9">
+    <End Role="QuestionCopy" Type="Self.QuestionCopy" Multiplicity="1" />
+    <End Role="Response" Type="Self.Response" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionCopy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Response">
+        <PropertyRef Name="idQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AnswerPortalModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnswerCopy" EntityType="Self.AnswerCopy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionCopy" EntityType="Self.QuestionCopy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Response" EntityType="Self.Response" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="R_10" Association="Self.R_10">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Response" EntitySet="Response" />
+    </AssociationSet>
+    <AssociationSet Name="R_11" Association="Self.R_11">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="R_12" Association="Self.R_12">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Channel" EntitySet="Channel" />
+    </AssociationSet>
+    <AssociationSet Name="R_2" Association="Self.R_2">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="R_3" Association="Self.R_3">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="QuestionCopy" EntitySet="QuestionCopy" />
+    </AssociationSet>
+    <AssociationSet Name="R_4" Association="Self.R_4">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="QuestionCopy" EntitySet="QuestionCopy" />
+    </AssociationSet>
+    <AssociationSet Name="R_5" Association="Self.R_5">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="QuestionCopy" EntitySet="QuestionCopy" />
+    </AssociationSet>
+    <AssociationSet Name="R_6" Association="Self.R_6">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="R_7" Association="Self.R_7">
+      <End Role="QuestionCopy" EntitySet="QuestionCopy" />
+      <End Role="AnswerCopy" EntitySet="AnswerCopy" />
+    </AssociationSet>
+    <AssociationSet Name="R_8" Association="Self.R_8">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="Response" EntitySet="Response" />
+    </AssociationSet>
+    <AssociationSet Name="R_9" Association="Self.R_9">
+      <End Role="QuestionCopy" EntitySet="QuestionCopy" />
+      <End Role="Response" EntitySet="Response" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

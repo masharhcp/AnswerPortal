@@ -1,0 +1,89 @@
+﻿@model AnswerPoortal.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pic_path)
+        </dt>
+
+        <dd>
+            <div class="question-image">
+            @HtmlHelpers.ShowImage(Model.pic_path)
+                </div>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.creationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lockDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lockDate)
+        </dd>
+
+
+        @for (int i = 0; i<Model.Answers.Count; i++) {
+            int o = i + 1;
+    <dt>
+            
+                Answer @o
+                @if (i == 0)
+                {<b><span style="color:green">(Correct)</span></b>}
+          
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Answers[i].num)@Html.DisplayFor(model => model.Answers[i].index)
+            @Html.DisplayFor(model => model.Answers[i].text)
+        </dd>
+
+        }
+
+
+    </dl>
+</div>
+<p class="backlink">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

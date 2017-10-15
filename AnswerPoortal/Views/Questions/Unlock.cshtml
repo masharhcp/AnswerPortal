@@ -1,0 +1,21 @@
+﻿@model AnswerPoortal.Models.Question
+
+@{
+    ViewBag.Title = "Unlock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Unock</h2>
+
+<h3>Are you sure you want to unlock this question?</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color backlink col-md-offset-1">
+        <input type="submit" value="Unock" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

@@ -1,0 +1,108 @@
+﻿@model AnswerPoortal.Models.Question
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Questions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal col-md-offset-1">
+        <h4>Question</h4>
+        <hr />
+        @Html.HiddenFor(model => model.idAccount)
+        @Html.HiddenFor(model => model.creationDate)
+        @Html.HiddenFor(model => model.lockDate)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-1 labell" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.text, htmlAttributes: new { @class = "control-label col-md-1 labell", })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageToUpload, htmlAttributes: new { @class = "control-label col-md-1 labell" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ImageToUpload, new { type = "file" })
+                @Html.ValidationMessageFor(model => model.ImageToUpload, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+  
+
+        @for (int i = 0; i < Model.Answers.Count; i++)
+        {
+            int o = i + 1;
+
+            if (i == 0) { }
+            <div class="col-md-offset-2 form-group col-md-6">
+
+                <h5>
+                    @if (i == 0)
+                    {
+                    <b><span style="color:green">(Correct)</span></b>
+                } Answer  @o
+            </h5>
+            <div class="form-style">
+
+                @Html.HiddenFor(model => model.Answers[i].id)
+                @Html.HiddenFor(model => model.Answers[i].idQuestion)
+                @Html.HiddenFor(model => model.Answers[i].isCorrect)
+
+                @Html.LabelFor(model => model.Answers[i].index, htmlAttributes: new { @class = "control-label" })
+
+
+                @Html.EditorFor(model => model.Answers[i].index, new { htmlAttributes = new { @class = "form-control", style = "width:60px;" } })
+                @Html.ValidationMessageFor(model => model.Answers[i].index, "", new { @class = "text-danger" })
+            </div>
+            <div>
+
+                @Html.LabelFor(model => model.Answers[i].num, htmlAttributes: new { @class = "control-label" })
+
+
+                @Html.EditorFor(model => model.Answers[i].num, new { htmlAttributes = new { @class = "form-control", style = "width:60px;" } })
+                @Html.ValidationMessageFor(model => model.Answers[i].num, "", new { @class = "text-danger" })
+
+
+
+            </div>
+
+
+
+            @Html.LabelFor(model => model.Answers[i].text, htmlAttributes: new { @class = "control-label" })
+
+
+            @Html.EditorFor(model => model.Answers[i].text, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Answers[i].text, "", new { @class = "text-danger" })
+ </div>
+
+        }
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+        
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

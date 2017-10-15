@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/fontawesome")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top maincolor">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Answer portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><img style="max-width:50px;" src="~/Content/images/ap-logo.png"></li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Account", "Account", "Profile")</li>
+                        <li>@Html.ActionLink("Users", "Index", "Accounts")</li>
+                        <li>@Html.ActionLink("Config", "Index", "Configs")</li>
+    
+}   
+                    @if (User.IsInRole("Student"))
+                    {
+                        <li>@Html.ActionLink("Account", "Account", "Profile")</li>
+                        <li>@Html.ActionLink("Channels", "Channels", "Channels")</li>
+                        <li>@Html.ActionLink("Blackboard", "Blackboard", "Blackboard")</li>
+                        <li>@Html.ActionLink("MyQuestions", "Index", "Questions")</li>
+                        <li>@Html.ActionLink("Buy Tokens", "Index", "TokenInfo")</li>
+                        <li>@Html.ActionLink("My Orders", "Index", "Orders")</li>
+
+                    }
+
+                    @if (User.IsInRole("Professor"))
+                    {
+                        <li>@Html.ActionLink("Account", "Account", "Profile")</li>
+                        <li>@Html.ActionLink("Channels", "Channels", "Channels")</li>
+                        <li>@Html.ActionLink("MyQuestions", "Index", "Questions")</li>
+                        <li>@Html.ActionLink("Buy Tokens", "Index", "TokenInfo")</li>
+                        <li>@Html.ActionLink("My Orders", "Index", "Orders")</li>
+
+
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

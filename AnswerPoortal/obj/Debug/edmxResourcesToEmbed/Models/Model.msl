@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AnswerPortalModelStoreContainer" CdmEntityContainer="AnswerPortalEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="AnswerPortalModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="tokenNum" ColumnName="tokenNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="AnswerPortalModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="isCorrect" ColumnName="isCorrect" />
+          <ScalarProperty Name="index" ColumnName="index" />
+          <ScalarProperty Name="idQuestion" ColumnName="idQuestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnswerCopies">
+      <EntityTypeMapping TypeName="AnswerPortalModel.AnswerCopy">
+        <MappingFragment StoreEntitySet="AnswerCopy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="isCorrect" ColumnName="isCorrect" />
+          <ScalarProperty Name="index" ColumnName="index" />
+          <ScalarProperty Name="idQuestion" ColumnName="idQuestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Channels">
+      <EntityTypeMapping TypeName="AnswerPortalModel.Channel">
+        <MappingFragment StoreEntitySet="Channel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="closureDate" ColumnName="closureDate" />
+          <ScalarProperty Name="timeConstrained" ColumnName="timeConstrained" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configs">
+      <EntityTypeMapping TypeName="AnswerPortalModel.Config">
+        <MappingFragment StoreEntitySet="Config">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="answerPriceK" ColumnName="answerPriceK" />
+          <ScalarProperty Name="unlockPriceM" ColumnName="unlockPriceM" />
+          <ScalarProperty Name="evaluationPriceE" ColumnName="evaluationPriceE" />
+          <ScalarProperty Name="silverPriceS" ColumnName="silverPriceS" />
+          <ScalarProperty Name="goldPriceG" ColumnName="goldPriceG" />
+          <ScalarProperty Name="platinumPriceP" ColumnName="platinumPriceP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="AnswerPortalModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tokenNum" ColumnName="tokenNum" />
+          <ScalarProperty Name="tokenPrice" ColumnName="tokenPrice" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="AnswerPortalModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="lockDate" ColumnName="lockDate" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionCopies">
+      <EntityTypeMapping TypeName="AnswerPortalModel.QuestionCopy">
+        <MappingFragment StoreEntitySet="QuestionCopy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="lockDate" ColumnName="lockDate" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+          <ScalarProperty Name="idOriginal" ColumnName="idOriginal" />
+          <ScalarProperty Name="idChannel" ColumnName="idChannel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Responses">
+      <EntityTypeMapping TypeName="AnswerPortalModel.Response">
+        <MappingFragment StoreEntitySet="Response">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="idChannel" ColumnName="idChannel" />
+          <ScalarProperty Name="idQuestion" ColumnName="idQuestion" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

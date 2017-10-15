@@ -1,0 +1,108 @@
+﻿@model AnswerPoortal.Models.TokenInfoModel
+
+
+@{ 
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Index</h2>
+
+</br>
+
+<div class="container">
+    <row>
+        <div class="col-md-12">
+            <div class="update-nag">
+                <div class="update-split update-num"><span class="glyphicon glyphicon-usd gi-5x"></span></div>
+                <div class="update-text">You have  @Html.DisplayFor(model => model.tokenNum) tokens</div>
+            </div>
+        </div>
+    </row>
+ </br>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="update-nag">
+                <div class="update-split update-success"><span class="glyphicon glyphicon-usd gi-5x"></span></div>
+                <div class="update-text">@Html.DisplayNameFor(model => model.silver) @Html.DisplayFor(model => model.silver) tokens </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="update-nag">
+                <div class="update-split update-danger"><span class="glyphicon glyphicon-usd gi-5x"></span></div>
+                <div class="update-text">@Html.DisplayNameFor(model => model.gold) @Html.DisplayFor(model => model.gold) tokens</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="update-nag">
+                <div class="update-split update-info"><span class="glyphicon glyphicon-usd gi-5x"></span></div>
+                <div class="update-text">@Html.DisplayNameFor(model => model.platinum) @Html.DisplayFor(model => model.platinum) tokens </div>
+            </div>
+        </div>
+
+      
+
+    </div>
+</div>
+
+ 
+
+    <div class="col-md-4">
+        <button  data-toggle="collapse" data-target="#silver" type="submit" value="SILVER" class="btn btn-lg btn-block btn-silver loading">SILVER</button>
+        <form action="/TokenInfo/Silver" method="post">
+            <div class="collapse  " id="silver" style="position:sticky">
+                <label for="usr">Phone number:</label>
+                <input type="number" name="phoneNum" class="form-control" id="usr" required n>
+                <input type="Submit" class="btn btn-block btn-success btn-block btn-col" />
+            </div>
+        </form>
+    </div>
+
+
+    <div class="col-md-4">
+        <button data-toggle="collapse" data-target="#gold" type="submit" value="GOLD" class="btn btn-lg btn-block btn-gold loading">GOLD</button>
+        <form action="/TokenInfo/Gold" method="post">
+            <div class="collapse" id="gold" style="position:sticky">
+                <label for="usr">Phone number:</label>
+                <input type="number" name="phoneNum" class="form-control" id="usr" required>
+                <input type="Submit" class="btn btn-block btn-success btn-block btn-col" />
+            </div>
+        </form>
+    </div>
+
+
+    <div class="col-md-4">
+        <button data-toggle="collapse" data-target="#platinum" type="submit" value="PLATINUM" class="btn btn-lg btn-block btn-platinum loading">PLATINUM</button>
+        <form action="/TokenInfo/Platinum" method="post">
+            <div class=" collapse" id="platinum" style="position:sticky">
+                <label for="usr">Phone number:</label>
+                <input type="number" name="phoneNum" class="form-control" id="usr" required>
+                <input type="Submit" class="btn btn-block btn-success btn-block btn-col" />
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+    
+
+
+
+</br>
+</br>
+</br>
+@Html.ActionLink("GOLD", "Gold", new { @class = "btn" })
+
+
+
+
+

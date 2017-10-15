@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c79636a2690a49b7be1dffe148277623" Name="Diagram1">
+        <EntityTypeShape EntityType="AnswerPortalModel.Account" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.Answer" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.AnswerCopy" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.Channel" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.Config" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.Order" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.Question" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.QuestionCopy" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerPortalModel.Response" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="AnswerPortalModel.R_10" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_11" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_12" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_2" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_3" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_6" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_7" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_5" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_8" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_4" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerPortalModel.R_9" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,67 @@
+﻿@model AnswerPoortal.Models.Config
+
+@{
+    ViewBag.Title = "Config";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Config</h2>
+
+<div>
+    <h4>Config</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.answerPriceK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.answerPriceK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unlockPriceM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unlockPriceM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.evaluationPriceE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.evaluationPriceE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.silverPriceS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.silverPriceS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goldPriceG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goldPriceG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.platinumPriceP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.platinumPriceP)
+        </dd>
+
+    </dl>
+</div>
+<div class="backlink">
+   
+    @Html.ActionLink("Edit", "EditConfig", new { id = config.ID })
+</div>

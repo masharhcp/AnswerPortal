@@ -1,0 +1,21 @@
+﻿@model AnswerPoortal.Models.Question
+
+@{
+    ViewBag.Title = "Lock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lock</h2>
+
+<h3>Are you sure you want to lock this question?</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color backlink col-md-offset-1">
+        <input type="submit" value="Lock" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

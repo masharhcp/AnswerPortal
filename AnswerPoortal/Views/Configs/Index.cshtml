@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AnswerPoortal.Models.Config>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr class="blueth">
+        <th>
+            @Html.DisplayNameFor(model => model.answerPriceK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unlockPriceM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.evaluationPriceE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.silverPriceS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.goldPriceG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.platinumPriceP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.answerPriceK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unlockPriceM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.evaluationPriceE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.silverPriceS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.goldPriceG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.platinumPriceP)
+        </td>
+        <td class="backlink">
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) 
+
+        </td>
+    </tr>
+}
+
+</table>

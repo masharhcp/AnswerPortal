@@ -1,0 +1,52 @@
+﻿@model AnswerPoortal.Models.Account
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="container">
+    <div class="row user-menu-container square">
+        <div class=" user-details">
+            <div class="row coralbg white">
+                <div class="col-md-6 no-pad">
+                    <div class="user-pad">
+                        <h4 class="white"> @Html.DisplayNameFor(model => model.name):&nbsp;@Html.DisplayFor(model => model.name) </h4>
+                        <hr>
+                        <h4 class="white">@Html.DisplayNameFor(model => model.surname):&nbsp;@Html.DisplayFor(model => model.surname)</h4>
+                        <hr>
+                        <h4 class="white">@Html.DisplayNameFor(model => model.email):&nbsp;@Html.DisplayFor(model => model.email)</h4>
+                       
+                    </div>
+                </div>
+                <div class="col-md-6 no-pad">
+                    <div class="user-image">
+                        <img src="~/Content/images/profile.jpg" class="img-responsive thumbnail">
+                    </div>
+                </div>
+            </div>
+            <div class="row overview">
+                <div class="col-md-4 user-pad text-center">
+                    <h3>@Html.DisplayNameFor(model => model.status)</h3>
+                    <h4>@Html.DisplayFor(model => model.status)</h4>
+                </div>
+                <div class="col-md-4 user-pad text-center">
+                    <h3>@Html.DisplayNameFor(model => model.role)</h3>
+                    <h4>@Html.DisplayFor(model => model.role)</h4>
+                </div>
+                <div class="col-md-4 user-pad text-center">
+                    <h3>@Html.DisplayNameFor(model => model.tokenNum)</h3>
+                   @if (User.IsInRole("Admin"))
+                   { <h4>∞</h4> }
+                   else
+                   {
+                    @Html.DisplayFor(model => model.tokenNum)
+                   }</div>
+            </div>
+        </div>
+    </div>
+</div>
